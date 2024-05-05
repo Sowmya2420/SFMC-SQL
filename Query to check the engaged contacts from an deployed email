@@ -1,0 +1,10 @@
+SELECT 
+    s.Email,
+    c.URL AS ClickedURL,
+    c.LinkName AS LinkName,
+    c.EventDate AS ClickThroughTime,
+    j.EmailName AS EmailName
+FROM ENT.[VIN_RT_CLIENT_NEWSLETTER-Q1_2024] s
+INNER JOIN _Click c ON s.Email = c.SubscriberKey
+LEFT JOIN _Job j ON c.JobID = j.JobID
+WHERE j.EmailName IN ('VIN_RT_Q1_Client_Newsletter_Seg1 EM1A 240318', 'VIN_RT_Q1_Client_Newsletter_Seg2 EM2A 240318')
